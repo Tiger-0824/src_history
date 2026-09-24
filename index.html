@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Samal–Rout Cup | Official History Archive</title>
+    
+    <!-- FontAwesome 6 for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ================= ULTRA HIGH-CONTRAST PALETTE ================= */
+        :root {
+            --bg-void: #02050c;
+            --neon-green: #00ff66;
+            --neon-green-glow: rgba(0, 255, 102, 0.75);
+            --neon-cyan: #00f3ff;
+            --neon-cyan-glow: rgba(0, 243, 255, 0.7);
+            --neon-gold: #ffbe0b;
+            --neon-gold-glow: rgba(255, 190, 11, 0.7);
+            --neon-purple: #c724ff;
+            --card-glass: rgba(8, 14, 30, 0.9);
+            --border-glow: rgba(0, 243, 255, 0.25);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-void);
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Subtle scanlines for stadium-broadcast aesthetic */
+        body::before {
+            content: " ";
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 255, 0, 0.02));
+            z-index: 1;
+            background-size: 100% 3px, 4px 100%;
+            pointer-events: none;
+        }
+
+        /* ================= DYNAMIC ORB LIGHTS ================= */
+        .ambient-light {
+            position: fixed;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(100px);
+            opacity: 0.45;
+            animation: orbFloat 9s ease-in-out infinite alternate;
+        }
+        .orb-green { top: -80px; left: -80px; background: radial-gradient(circle, var(--neon-green), transparent); }
+        .orb-cyan { top: 45%; right: -100px; background: radial-gradient(circle, var(--neon-cyan), transparent); animation-delay: 3s; }
+        .orb-gold { bottom: 120px; left: 5%; background: radial-gradient(circle, var(--neon-gold), transparent); animation-delay: 6s; }
+
+        @keyframes orbFloat {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.35; }
+            50% { transform: translate(30px, 40px) scale(1.25); opacity: 0.6; }
+            100% { transform: translate(-25px, -20px) scale(0.9); opacity: 0.4; }
+        }
+
+        /* ================= TOP HEADER ================= */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background: rgba(3, 7, 18, 0.94);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 255, 102, 0.25);
+            box-shadow: 0 4px 25px rgba(0, 255, 102, 0.12);
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Enlarged Holographic Photo Crest */
+        .cup-logo-wrapper {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            padding: 2.5px;
+            background: linear-gradient(135deg, var(--neon-green), var(--neon-cyan), var(--neon-gold));
+            box-shadow: 0 0 20px var(--neon-green-glow);
+            animation: rotateGlowBorder 5s linear infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes rotateGlowBorder {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .cup-logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 11px;
+            background: #02050c;
+            display: block;
+        }
+
+        .header-titles h1 {
+            font-size: 15px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .src-badge {
+            font-size: 9.5px;
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--neon-green), var(--neon-cyan));
+            color: #02050c;
+            padding: 2px 6px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px var(--neon-green-glow);
+        }
+
+        .header-titles p {
+            font-size: 10px;
+            color: #94a3b8;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .est-pill {
+            font-size: 10px;
+            font-weight: 900;
+            color: var(--neon-gold);
+            background: rgba(255, 190, 11, 0.12);
+            border: 1px solid var(--neon-gold);
+            padding: 4px 10px;
+            border-radius: 30px;
+            box-shadow: 0 0 14px var(--neon-gold-glow);
+            animation: beaconPulse 2s infinite alternate;
+        }
+
+        @keyframes beaconPulse {
+            0% { transform: scale(1); box-shadow: 0 0 8px rgba(255, 190, 11, 0.4); }
+            100% { transform: scale(1.05); box-shadow: 0 0 18px rgba(255, 190, 11, 0.8); }
+        }
+
+        /* ================= MAIN CONTAINER ================= */
+        main {
+            position: relative;
+            z-index: 10;
+            flex: 1;
+            max-width: 650px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 16px 14px 120px 14px;
+        }
+
+        .tab-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(14px) scale(0.97);
+            transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .tab-section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* ================= CARDS & NEON GLOWS ================= */
+        .glass-card {
+            background: var(--card-glass);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 14px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.65), inset 0 0 20px rgba(0, 243, 255, 0.05);
+            backdrop-filter: blur(14px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-green), var(--neon-cyan), transparent);
+            animation: lightSweep 4.5s infinite linear;
+        }
+
+        @keyframes lightSweep {
+            0% { left: -120%; }
+            50%, 100% { left: 120%; }
+        }
+
+        .border-green {
+            border: 1px solid rgba(0, 255, 102, 0.45);
+            box-shadow: 0 0 25px rgba(0, 255, 102, 0.15), inset 0 0 15px rgba(0, 255, 102, 0.05);
+        }
+
+        .border-cyan {
+            border: 1px solid rgba(0, 243, 255, 0.45);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.15), inset 0 0 15px rgba(0, 243, 255, 0.05);
+        }
+
+        .border-gold {
+            border: 1px solid rgba(255, 190, 11, 0.45);
+            box-shadow: 0 0 25px rgba(255, 190, 11, 0.2), inset 0 0 15px rgba(255, 190, 11, 0.05);
+        }
+
+        .gradient-text-electric {
+            background: linear-gradient(90deg, #00ff66, #00f3ff, #ffbe0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 250% 250%;
+            animation: gradientCycle 4s ease infinite;
+        }
+
+        @keyframes gradientCycle {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .neon-tag {
+            font-size: 9.5px;
+            font-weight: 900;
+            padding: 3px 8px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            display: inline-block;
+        }
+
+        .tag-green {
+            background: rgba(0, 255, 102, 0.15);
+            color: var(--neon-green);
+            border: 1px solid var(--neon-green);
+            box-shadow: 0 0 12px rgba(0, 255, 102, 0.4);
+        }
+
+        .tag-gold {
+            background: rgba(255, 190, 11, 0.15);
+            color: var(--neon-gold);
+            border: 1px solid var(--neon-gold);
+            box-shadow: 0 0 12px rgba(255, 190, 11, 0.4);
+        }
+
+        .tag-cyan {
+            background: rgba(0, 243, 255, 0.15);
+            color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan);
+            box-shadow: 0 0 12px rgba(0, 243, 255, 0.4);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .stat-card {
+            background: rgba(2, 6, 18, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 10px 4px;
+            text-align: center;
+        }
+
+        .stat-card .val {
+            font-size: 20px;
+            font-weight: 900;
+            text-shadow: 0 0 12px currentColor;
+        }
+
+        .stat-card .lbl {
+            font-size: 9px;
+            font-weight: 800;
+            color: #94a3b8;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .poetic-box {
+            position: relative;
+            background: linear-gradient(135deg, rgba(0, 255, 102, 0.08), rgba(0, 243, 255, 0.02));
+            border-left: 4px solid var(--neon-green);
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.15);
+            padding: 14px;
+            border-radius: 12px;
+            font-style: italic;
+            font-size: 13px;
+            color: #e2e8f0;
+            line-height: 1.5;
+            margin: 10px 0;
+        }
+
+        /* ================= PROFILES WITH MUCH BIGGER PHOTOS ================= */
+        .profile-row {
+            display: flex;
+            gap: 14px;
+            align-items: stretch;
+        }
+
+        /* Upgraded from 82x98px to 125x180px for a massive visual boost */
+        .profile-photo-box {
+            position: relative;
+            width: 125px;
+            min-width: 125px;
+            height: 180px;
+            border-radius: 16px;
+            padding: 3px;
+            flex-shrink: 0;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .glow-gold { background: linear-gradient(135deg, var(--neon-gold), #ff3c00); box-shadow: 0 0 24px rgba(255, 190, 11, 0.45); }
+        .glow-green { background: linear-gradient(135deg, var(--neon-green), var(--neon-cyan)); box-shadow: 0 0 24px rgba(0, 255, 102, 0.45); }
+        .glow-cyan { background: linear-gradient(135deg, var(--neon-cyan), #0066ff); box-shadow: 0 0 24px rgba(0, 243, 255, 0.45); }
+
+        .profile-photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Anchors crop toward the upper body so 9:16 vertical photos never chop heads */
+            object-position: center 20%;
+            border-radius: 13px;
+            background: #02050c;
+            display: block;
+        }
+
+        .profile-details-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .profile-quote {
+            font-size: 11px;
+            color: #e2e8f0;
+            background: rgba(2, 6, 18, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 6px 9px;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        /* ================= SEASONS CHIPS ================= */
+        .season-chips {
+            display: flex;
+            gap: 7px;
+            overflow-x: auto;
+            padding: 6px 2px 10px 2px;
+            scrollbar-width: none;
+        }
+        .season-chips::-webkit-scrollbar { display: none; }
+
+        .season-btn {
+            background: rgba(13, 20, 38, 0.95);
+            border: 1px solid rgba(0, 243, 255, 0.25);
+            color: #94a3b8;
+            font-weight: 800;
+            font-size: 12px;
+            padding: 8px 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .season-btn.active {
+            background: var(--neon-green);
+            color: #02050c;
+            border-color: var(--neon-green);
+            box-shadow: 0 0 20px var(--neon-green-glow);
+            transform: scale(1.06);
+            font-weight: 900;
+        }
+
+        .season-card {
+            display: none;
+        }
+        .season-card.active {
+            display: block;
+            animation: cardPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes cardPop {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .champ-highlight {
+            background: linear-gradient(90deg, rgba(255, 190, 11, 0.2), rgba(2, 6, 18, 0.9));
+            border-left: 4px solid var(--neon-gold);
+            padding: 12px;
+            border-radius: 10px;
+            margin: 10px 0;
+            box-shadow: 0 0 20px rgba(255, 190, 11, 0.2);
+        }
+
+        /* ================= PLAYERS ARCHIVE ================= */
+        .player-filter-tabs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            background: #030714;
+            padding: 5px;
+            border-radius: 14px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            margin-bottom: 12px;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 8px 2px;
+            border-radius: 9px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn.active {
+            background: var(--neon-cyan);
+            color: #02050c;
+            box-shadow: 0 0 16px var(--neon-cyan-glow);
+            font-weight: 900;
+        }
+
+        .player-grid {
+            display: none;
+        }
+        .player-grid.active {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 9px;
+        }
+
+        .player-tile {
+            background: rgba(13, 20, 38, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .player-tile.legend-style {
+            border: 1px solid var(--neon-gold);
+            background: linear-gradient(135deg, rgba(255, 190, 11, 0.15), rgba(13, 20, 38, 0.95));
+            box-shadow: 0 0 20px rgba(255, 190, 11, 0.25);
+        }
+
+        /* ================= FLICKERING NEON GREEN HEART & FOOTER ================= */
+        .footer-credits {
+            max-width: 600px;
+            margin: 28px auto 10px auto;
+            padding: 20px 12px 6px 12px;
+            text-align: center;
+            border-top: 1px solid rgba(51, 65, 85, 0.5);
+            font-size: 12px;
+            color: #64748b;
+            letter-spacing: 0.8px;
+            line-height: 1.8;
+        }
+
+        .neon-flicker-heart {
+            display: inline-block;
+            color: var(--neon-green) !important;
+            animation: neonHeartFlicker 2.2s infinite ease-in-out;
+            margin: 0 3px;
+            vertical-align: middle;
+        }
+
+        @keyframes neonHeartFlicker {
+            0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+                opacity: 1;
+                filter: drop-shadow(0 0 4px #00ff66) drop-shadow(0 0 12px #00ff66) drop-shadow(0 0 24px #00ff66);
+                transform: scale(1.15);
+                color: #00ff66;
+            }
+            20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+                opacity: 0.35;
+                filter: none;
+                transform: scale(0.92);
+                color: #0d5c2c;
+            }
+        }
+
+        .lala-glow {
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #00ff66, #00f3ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 18px rgba(0, 255, 102, 0.5);
+        }
+
+        /* ================= BOTTOM APP DOCK ================= */
+        .bottom-app-dock {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(2, 5, 12, 0.95);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-top: 1px solid rgba(0, 255, 102, 0.25);
+            box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.8);
+            padding: 8px 12px 10px 12px;
+        }
+
+        .dock-grid {
+            max-width: 480px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 6px;
+        }
+
+        .dock-btn {
+            background: transparent;
+            border: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 7px 2px;
+            border-radius: 12px;
+            color: #8892b0;
+            cursor: pointer;
+            transition: all 0.22s ease;
+        }
+
+        .dock-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            margin-bottom: 3px;
+        }
+
+        .dock-btn span {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+        }
+
+        .dock-btn.active {
+            background: #22c55e;
+            color: #02050c;
+            box-shadow: 0 0 22px rgba(34, 197, 94, 0.75), inset 0 0 10px rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .dock-btn.active svg {
+            fill: #02050c;
+        }
+
+        .dock-btn.active span {
+            color: #02050c;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- AMBIENT LIGHT SOURCES -->
+    <div class="ambient-light orb-green"></div>
+    <div class="ambient-light orb-cyan"></div>
+    <div class="ambient-light orb-gold"></div>
+
+    <!-- STICKY TOP APP BAR WITH LOGO PHOTO ICON -->
+    <header>
+        <div class="header-brand">
+            <div class="cup-logo-wrapper">
+                <img src="logo.jpg" 
+                     onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'%2302050c\'><rect width=\'100\' height=\'100\' fill=\'%2302050c\'/><polygon points=\'50,15 85,85 15,85\' fill=\'none\' stroke=\'%2300ff66\' stroke-width=\'7\'/><circle cx=\'50\' cy=\'52\' r=\'14\' fill=\'%23ffbe0b\'/></svg>'" 
+                     alt="SRC Logo" 
+                     class="cup-logo-img">
+            </div>
+            <div class="header-titles">
+                <h1>SAMAL–ROUT CUP <span class="src-badge">SRC</span></h1>
+                <p>Digital Archive • L.Park Turf</p>
+            </div>
+        </div>
+        <div class="est-pill">EST. 2026</div>
+    </header>
+
+    <!-- MAIN VIEW CONTAINER -->
+    <main>
+
+        <!-- ================= TAB 1: ORIGIN ================= -->
+        <div id="view-origin" class="tab-section active">
+            <div class="glass-card border-green">
+                <span class="neon-tag tag-green">Inaugural Chapter</span>
+                <h2 class="gradient-text-electric" style="font-size: 22px; font-weight: 900; margin-top: 6px;">
+                    Where It All Began
+                </h2>
+                <p style="font-size: 12px; color: #cbd5e1; line-height: 1.5; margin-top: 4px;">
+                    A cup born from pure competition, forged in brotherhood. Founded in 2026 at the fortress of <strong style="color: var(--neon-gold);">L.Park</strong>.
+                </p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="val" style="color: var(--neon-gold);">07</div>
+                        <div class="lbl">Seasons</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="val" style="color: var(--neon-green);">07</div>
+                        <div class="lbl">Champs</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="val" style="color: var(--neon-cyan);">01</div>
+                        <div class="lbl">L.Park</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="val" style="color: #c724ff;">2026</div>
+                        <div class="lbl">Founded</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Samal-Rout Card -->
+            <div class="glass-card border-gold">
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px; margin-bottom: 10px;">
+                    <span style="font-size: 11px; font-weight: 800; color: var(--neon-gold); text-transform: uppercase;">Why "Samal–Rout"?</span>
+                    <span class="neon-tag tag-gold">Co-Founders</span>
+                </div>
+                <div style="display: flex; justify-content: space-around; text-align: center; padding: 6px 0;">
+                    <div>
+                        <div style="font-weight: 900; color: #ffffff; font-size: 14px;">ASMIT SAMAL</div>
+                        <div style="font-size: 11px; color: var(--neon-green); font-weight: 700;">Squad Balance & Vision</div>
+                    </div>
+                    <div style="font-size: 22px; font-weight: 900; color: var(--neon-gold); text-shadow: 0 0 10px var(--neon-gold);">+</div>
+                    <div>
+                        <div style="font-weight: 900; color: #ffffff; font-size: 14px;">SUBHAM ROUT</div>
+                        <div style="font-size: 11px; color: var(--neon-cyan); font-weight: 700;">Treasury & Ground Ops</div>
+                    </div>
+                </div>
+                <p style="font-size: 11px; color: #94a3b8; text-align: center; margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px;">
+                    United alongside <strong style="color: #ffffff;">Abhisek Dash</strong> in turning rivalries into permanent family memories.
+                </p>
+            </div>
+
+            <!-- Poetic Story -->
+            <div class="glass-card">
+                <span class="neon-tag tag-cyan" style="margin-bottom: 6px;">Poetic Inscription</span>
+                <div class="poetic-box">
+                    “Before there was a trophy, there was an idea.<br>
+                    Before there was a champion, there was a group.<br>
+                    And before there was a competition, there was a dream — to bring people together, challenge one another, and turn a group into something closer to a family.”
+                </div>
+                <div class="poetic-box" style="border-color: var(--neon-gold); background: linear-gradient(135deg, rgba(255, 190, 11, 0.08), rgba(0,0,0,0));">
+                    “Competition without losing connection, rivalry without losing friendship, and cricket that creates memories beyond the scoreboard.”
+                </div>
+            </div>
+
+            <!-- Venue Tribute -->
+            <div class="glass-card border-cyan" style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="font-size: 10px; font-weight: 800; color: var(--neon-cyan); text-transform: uppercase;">The Fortress</span>
+                    <div style="font-size: 20px; font-weight: 900; color: #ffffff;">L.PARK</div>
+                    <div style="font-size: 11px; color: #94a3b8;">7 Seasons • 7 Chapters • 1 Historic Home</div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 24px; font-weight: 900; color: var(--neon-cyan); text-shadow: 0 0 14px var(--neon-cyan);">100%</div>
+                    <div style="font-size: 9px; color: #94a3b8; font-weight: 700;">MATCH RECORD</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB 2: PILLARS & SPONSOR (BIGGER PHOTOS) ================= -->
+        <div id="view-pillars" class="tab-section">
+            <h2 class="gradient-text-electric" style="font-size: 20px; font-weight: 900; text-transform: uppercase;">Founding Pillars</h2>
+            <p style="font-size: 12px; color: #94a3b8; margin-bottom: 14px;">The visionaries, organisers and benefactor of the cup</p>
+
+            <!-- Founder 1: Lala Bhai -->
+            <div class="glass-card border-gold">
+                <div class="profile-row">
+                    <div class="profile-photo-box glow-gold">
+                        <img src="lala.jpg" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 125 180\' fill=\'%2302050c\'><rect width=\'125\' height=\'180\' fill=\'%2302050c\'/><circle cx=\'62\' cy=\'65\' r=\'32\' fill=\'%23ffbe0b\'/><path d=\'M25 160 C25 115 100 115 100 160 Z\' fill=\'%23ffbe0b\'/></svg>'" alt="Lala Bhai">
+                    </div>
+                    <div class="profile-details-column">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 4px;">
+                                <div style="font-size: 16px; font-weight: 900; color: #ffffff;">LALA BHAI</div>
+                                <span class="neon-tag tag-gold">FOUNDER</span>
+                            </div>
+                            <div style="font-size: 12px; font-weight: 800; color: var(--neon-gold); margin: 3px 0;">Founder • Head Organiser</div>
+                            <p style="font-size: 11.5px; color: #cbd5e1; line-height: 1.4;">
+                                “A huge role in making the tournament successful; without him nothing would have happened.”
+                            </p>
+                        </div>
+                        <div class="profile-quote">
+                            “Face the failure, until the failure fails to face you.”
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Founder 2: Asmit Samal -->
+            <div class="glass-card border-green">
+                <div class="profile-row">
+                    <div class="profile-photo-box glow-green">
+                        <img src="asmit.jpg" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 125 180\' fill=\'%2302050c\'><rect width=\'125\' height=\'180\' fill=\'%2302050c\'/><circle cx=\'62\' cy=\'65\' r=\'32\' fill=\'%2300ff66\'/><path d=\'M25 160 C25 115 100 115 100 160 Z\' fill=\'%2300ff66\'/></svg>'" alt="Asmit Samal">
+                    </div>
+                    <div class="profile-details-column">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 4px;">
+                                <div style="font-size: 16px; font-weight: 900; color: #ffffff;">ASMIT SAMAL</div>
+                                <span class="neon-tag tag-green">CO-FOUNDER</span>
+                            </div>
+                            <div style="font-size: 12px; font-weight: 800; color: var(--neon-green); margin: 3px 0;">Co-Founder • Team Balance</div>
+                            <p style="font-size: 11.5px; color: #cbd5e1; line-height: 1.4;">
+                                Draft creator balancing player skill and squad equality across all 7 seasons.
+                            </p>
+                        </div>
+                        <div class="profile-quote">
+                            “Every time I step on the field, I'm in a zone where nothing else matters.”
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Founder 3: Subham Rout -->
+            <div class="glass-card border-cyan">
+                <div class="profile-row">
+                    <div class="profile-photo-box glow-cyan">
+                        <img src="subu.jpg" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 125 180\' fill=\'%2302050c\'><rect width=\'125\' height=\'180\' fill=\'%2302050c\'/><circle cx=\'62\' cy=\'65\' r=\'32\' fill=\'%2300f3ff\'/><path d=\'M25 160 C25 115 100 115 100 160 Z\' fill=\'%2300f3ff\'/></svg>'" alt="Subham Rout">
+                    </div>
+                    <div class="profile-details-column">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 4px;">
+                                <div style="font-size: 16px; font-weight: 900; color: #ffffff;">SUBHAM ROUT</div>
+                                <span class="neon-tag tag-cyan">CO-FOUNDER</span>
+                            </div>
+                            <div style="font-size: 12px; font-weight: 800; color: var(--neon-cyan); margin: 3px 0;">Co-Founder • Operations</div>
+                            <p style="font-size: 11.5px; color: #cbd5e1; line-height: 1.4;">
+                                Managing tournament funds, pitch arrangements, and matchday execution.
+                            </p>
+                        </div>
+                        <div class="profile-quote">
+                            “Pressure is a privilege.”
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Operational Flow -->
+            <div class="glass-card" style="text-align: center; padding: 12px;">
+                <span style="font-size: 10px; font-weight: 800; color: #94a3b8; text-transform: uppercase;">Organisational Pillar Flow</span>
+                <div style="font-size: 13px; font-weight: 800; color: #ffffff; display: flex; justify-content: space-around; margin-top: 6px;">
+                    <span style="color: var(--neon-gold);">Lala Bhai</span> ➔ 
+                    <span style="color: var(--neon-green);">Asmit</span> ➔ 
+                    <span style="color: var(--neon-cyan);">Subu</span> ➔ 
+                    <span style="color: var(--neon-purple);">Babuma</span>
+                </div>
+                <div style="font-size: 10px; color: #64748b; margin-top: 6px; font-weight: 700;">7 SEASONS • ONE CONTINUOUS EFFORT</div>
+            </div>
+
+            <!-- MAIN SPONSOR: Abinash Pal -->
+            <div class="glass-card border-green" style="background: linear-gradient(135deg, rgba(0, 255, 102, 0.12), rgba(7, 13, 28, 0.95));">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span style="font-size: 11px; font-weight: 800; color: var(--neon-green); text-transform: uppercase;">Main Tournament Sponsor</span>
+                    <span class="neon-tag tag-green">Partner</span>
+                </div>
+                <div class="profile-row">
+                    <div class="profile-photo-box glow-green">
+                        <img src="abinash.jpg" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 125 180\' fill=\'%2302050c\'><rect width=\'125\' height=\'180\' fill=\'%2302050c\'/><circle cx=\'62\' cy=\'65\' r=\'32\' fill=\'%2300ff66\'/><path d=\'M25 160 C25 115 100 115 100 160 Z\' fill=\'%2300ff66\'/></svg>'" alt="Abinash Pal">
+                    </div>
+                    <div class="profile-details-column">
+                        <div>
+                            <div style="font-size: 16px; font-weight: 900; color: #ffffff;">ABINASH PAL</div>
+                            <div style="font-size: 12px; font-weight: 800; color: var(--neon-green); margin: 3px 0;">Official Match & Hospitality Sponsor</div>
+                            <div style="display: flex; gap: 5px; margin-top: 6px;">
+                                <span style="font-size: 10px; background: rgba(0,0,0,0.6); padding: 3px 8px; border-radius: 6px; color: var(--neon-green); border: 1px solid rgba(0,255,102,0.3);">Wickets</span>
+                                <span style="font-size: 10px; background: rgba(0,0,0,0.6); padding: 3px 8px; border-radius: 6px; color: var(--neon-cyan); border: 1px solid rgba(0,243,255,0.3);">Balls</span>
+                                <span style="font-size: 10px; background: rgba(0,0,0,0.6); padding: 3px 8px; border-radius: 6px; color: var(--neon-gold); border: 1px solid rgba(255,190,11,0.3);">Snacks</span>
+                            </div>
+                        </div>
+                        <div style="font-size: 11px; color: #94a3b8; font-style: italic; margin-top: 6px;">“A vital contribution to the tournament journey.”</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB 3: SEASONS ================= -->
+        <div id="view-seasons" class="tab-section">
+            <h2 class="gradient-text-electric" style="font-size: 20px; font-weight: 900; text-transform: uppercase;">Seven Seasons Archive</h2>
+            <p style="font-size: 12px; color: #94a3b8; margin-bottom: 12px;">Select any season below for detailed match breakdown</p>
+
+            <div class="season-chips">
+                <button class="season-btn active" onclick="pickSeason(1)">S01</button>
+                <button class="season-btn" onclick="pickSeason(2)">S02</button>
+                <button class="season-btn" onclick="pickSeason(3)">S03</button>
+                <button class="season-btn" onclick="pickSeason(4)">S04</button>
+                <button class="season-btn" onclick="pickSeason(5)">S05</button>
+                <button class="season-btn" onclick="pickSeason(6)">S06</button>
+                <button class="season-btn" onclick="pickSeason(7)">S07</button>
+            </div>
+
+            <!-- S01 -->
+            <div id="season-tab-1" class="season-card active glass-card border-gold">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size: 22px; font-weight: 900; color: var(--neon-gold);">SEASON 01</span>
+                    <span style="font-size: 11px; color: #94a3b8; font-weight: 700;">26 JULY 2026</span>
+                </div>
+                <div style="font-size: 11px; color: var(--neon-green); font-weight: 800; margin-top: 2px;">T20 INAUGURAL FORMAT</div>
+                <div class="champ-highlight">
+                    <div style="font-size: 10px; font-weight: 800; color: var(--neon-gold); text-transform: uppercase;">🏆 Champion</div>
+                    <div style="font-size: 19px; font-weight: 900; color: #ffffff;">THE SYNDICATE</div>
+                    <div style="font-size: 12px; color: #cbd5e1;">Captain: <strong>Lala</strong> • Vice-Captain: <strong>Subu</strong></div>
+                </div>
+                <div style="font-size: 12px; color: #94a3b8; margin: 8px 0;">Runner-up: <strong style="color: #ffffff;">Panda XI</strong></div>
+                <p style="font-size: 12px; color: #cbd5e1; font-style: italic;">“The historic first tournament that launched the Samal–Rout Cup archive.”</p>
+                <div style="display:flex; justify-content:space-between; font-size: 10px; color: #64748b; margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px; font-weight: 700;">
+                    <span>VENUE: <strong style="color: var(--neon-green);">L.PARK</strong></span>
+                    <span>TEAMS: 02</span>
+                    <span>PLAYERS: 20</span>
+                </div>
+            </div>
+
+            <!-- S02 -->
+            <div id="season-tab-2" class="season-card glass-card border-green">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size: 22px; font-weight: 900; color: var(--neon-green);">SEASON 02</span>
+                    <span style="font-size: 11px; color: #94a3b8; font-weight: 700;">02 AUGUST 2026</span>
+                </div>
+                <div style="font-size: 11px; color: var(--neon-green); font-weight: 800; margin-top: 2px;">T10 SERIES</div>
+                <div class="champ-highlight" style="border-left-color: var(--neon-green);">
+                    <div style="font-size: 10px; font-weight: 800; color: var(--neon-green); text-transform: uppercase;">🏆 Champion</div>
+                    <div style="font-size: 19px; font-weight: 900; color: #ffffff;">DHAKAD XI</div>
+                    <div style="font-size: 12px; color: #cbd5e1;">Captain: <strong>Rishu</strong> • Vice-Captain: <strong>Subu</strong></div>
+                </div>
+                <div style="font-size: 12px; color: #94a3b8; margin: 8px 0;">Runner-up: <strong style="color: #ffffff;">Lappa Mar XI</strong></div>
+                <p style="font-size: 12px; color: #cbd5e1; font-style: italic;">“Fast-paced T10 cricket featuring electrifying death-over run chases.”</p>
+                <div style="display:flex; justify-content:space-between; font-size: 10px; color: #64748b; margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px; font-weight: 700;">
+                    <span>VENUE: <strong style="color: var(--neon-green);">L.PARK</strong></span>
+                    <span>TEAMS: 02</span>
+                    <span>PLAYERS: 14</span>
+                </div>
+            </div>
+
+            <!-- S03 -->
+            <div id="season-tab-3" class="season-card glass-card border-cyan">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size: 22px; font-weight: 900; color: var(--neon-cyan);">SEASON 03</span>
+                    <span style="font-size: 11px; color: #94a3b8; font-weight: 700;">09 AUGUST 2026</span>
+                </div>
+                <div style="font-size: 11px; color: var(--neon-cyan); font-weight: 800; margin-top: 2px;">40 OVERS SPECIAL</div>
+                <div class="champ-highlight" style="border-left-color: var(--neon-cyan);">
+                    <div style="font-size: 10px; font-weight: 800; color: var(--neon-cyan); text-transform: uppercase;">🏆 Champion</div>
+                    <div style="font-size: 19px; font-weight: 900; color: #ffffff;">STANDARD XI</div>
+                    <div style="font-size: 12px; color: #cbd5e1;">Captain: <strong>Kunu</strong> • Vice-Captain: <strong>Subu</strong></div>
+                </div>
+                <div style="font-size: 12px; color: #94a3b8; margin: 8px 0;">Runner-up: <strong style="color: #ffffff;">Team Super Giants</strong></div>
+                <p style="font-size: 12px; color: #cbd5e1; font-style: italic;">“An endurance test over 40 overs challenging players to their stamina limits.”</p>
+                <div style="display:flex; justify-content:space-between; font-size: 10px; color: #64748b; margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px; font-weight: 700;">
+                    <span>VENUE: <strong style="color: var(--neon-green);">L.PARK</strong></span>
+                    <span>TEAMS: 02</span>
+                    <span>PLAYERS: 16</span>
+                </div>
+            </div>
+
+            <!-- S04 -->
+            <div id="season-tab-4" class="season-card glass-card border-gold">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size: 22px; font-weight: 900; color: var(--neon-gold);">SEASON 04</span>
+                    <span style="font-size: 11px; color: #94a3b8; font-weight: 700;">23 AUGUST 2026</span>
+                </div>
+                <div style="font-size: 11px; color: var(--neon-gold); font-weight: 800; margin-top: 2px;">12 OVERS CLÁSICO</div>
+                <div class="champ-highlight">
+                    <div style="font-size: 10px; font-weight: 800; color: var(--neon-gold); text-transform: uppercase;">🏆 Champion</div>
+                    <div style="font-size: 19px; font-weight: 900; color: #ffffff;">BARCELONA</div>
+                    <div style="font-size: 12px; color: #cbd5e1;">Captain: <strong>Dubey</strong> • Vice-Captain: <strong>Lala</strong></div>
+                </div>
+                <div style="font-size: 12px; color: #94a3b8; margin: 8px 0;">Runner-up: <strong style="color: #ffffff;">Real Madrid</strong></div>
+                <p style="font-size: 12px; color: #cbd5e1; font-style: italic;">“The historic Clásico edition where Barcelona secured the silverware.”</p>
+                <div style="display:flex; justify-content:space-between; font-size: 10px; color: #64748b; margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px; font-weight: 700;">
+                    <span>VENUE: <strong style="color: var(--neon-green);">L.PARK</strong></span>
+                    <span>TEAMS: 02</span>
+                    <span>PLAYERS: 16</span>
+                </div>
+            </div>
+
+            <!-- S05 -->
+            <div id="season-tab-5" class="season-card glass-card border-green">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size: 22px; font-weight: 900; color: var(--neon-green);">SEASON 05</span>
+                    <span style="font-size: 11px; color: #94a3b8; font-weight: 700;">30 AUGUST 2026</span>
+                </div>
+                <div style="font-size: 11px; color: var(--neon-green); font-weight: 800; margin-top: 2px;">T10 SERIES</div>
+                <div class="champ-highlight" style="border-left-color: var(--neon-green);">
+                    <div style="font-size: 10px; font-weight: 800; color: var(--neon-green); text-transform: uppercase;">🏆 Champion</div>
+                    <div style="font-size: 19px; font-weight: 900; color: #ffffff;">LEGION XI</div>
+                    <div style="font-size: 12px; color: #cbd5e1;">Captain: <strong>Subu</strong> • Vice-Captain: <strong>Babuma</strong></div>
+                </div>
+                <div style="font-size: 12px; color: #94a3b8; margin: 8px 0;">Runner-up: <strong style="color: #ffffff;">Velocity XI</strong></div>
+                <p style="font-size: 12px; color: #cbd5e1; font-style: italic;">“Subu’s tactical mastery powered Legion XI to victory in the T10 series.”</p>
+                <div style="display:flex; justify-content:space-between; font-size: 10px; color: #64748b; margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px; font-weight: 700;">
+                    <span>VENUE: <strong style="color: var(--neon-green);">L.PARK</strong></span>
+                    <span>TEAMS: 02</span>
+                    <span>PLAYERS: 16</span>
+                </div>
+            </div>
+
+            <!-- S06 -->
+            <div id="season-tab-6" class="season-card glass-card border-cyan">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size: 22px; font-weight: 900; color: var(--neon-purple);">SEASON 06</span>
+                    <span style="font-size: 11px; color: #94a3b8; font-weight: 700;">06 SEPTEMBER 2026</span>
+                </div>
+                <div style="font-size: 11px; color: var(--neon-purple); font-weight: 800; margin-top: 2px;">T20 DOCUMENTARY ERA</div>
+                <div class="champ-highlight" style="border-left-color: var(--neon-purple);">
+                    <div style="font-size: 10px; font-weight: 800; color: var(--neon-purple); text-transform: uppercase;">🏆 Champion</div>
+                    <div style="font-size: 19px; font-weight: 900; color: #ffffff;">CHRONOS</div>
+                    <div style="font-size: 12px; color: #cbd5e1;">Captain: <strong>Somnath</strong> • Vice-Captain: <strong>Subu</strong></div>
+                </div>
+                <div style="font-size: 12px; color: #94a3b8; margin: 8px 0;">Runner-up: <strong style="color: #ffffff;">Legions</strong></div>
+                <p style="font-size: 12px; color: #cbd5e1; font-style: italic;">“The most documented and video-chronicled tournament series in SRC history.”</p>
+                <div style="display:flex; justify-content:space-between; font-size: 10px; color: #64748b; margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px; font-weight: 700;">
+                    <span>VENUE: <strong style="color: var(--neon-green);">L.PARK</strong></span>
+                    <span>TEAMS: 02</span>
+                    <span>PLAYERS: 18</span>
+                </div>
+            </div>
+
+            <!-- S07 -->
+            <div id="season-tab-7" class="season-card glass-card border-gold">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size: 22px; font-weight: 900; color: var(--neon-gold);">SEASON 07</span>
+                    <span style="font-size: 11px; color: #94a3b8; font-weight: 700;">13 SEPTEMBER 2026</span>
+                </div>
+                <div style="font-size: 11px; color: var(--neon-gold); font-weight: 800; margin-top: 2px;">15-OVER SERIES • LATEST CHAPTER</div>
+                <div class="champ-highlight">
+                    <div style="font-size: 10px; font-weight: 800; color: var(--neon-gold); text-transform: uppercase;">🏆 Champion</div>
+                    <div style="font-size: 19px; font-weight: 900; color: #ffffff;">THE SYNDICATE</div>
+                    <div style="font-size: 12px; color: #cbd5e1;">Captain: <strong>Lala</strong> • Vice-Captain: <strong>Sumit</strong></div>
+                </div>
+                <div style="font-size: 12px; color: #94a3b8; margin: 8px 0;">Runner-up: <strong style="color: #ffffff;">Blue Phoenix</strong></div>
+                <p style="font-size: 12px; color: #cbd5e1; font-style: italic;">“The Syndicate cements dynasty status with their second historic trophy.”</p>
+                <div style="display:flex; justify-content:space-between; font-size: 10px; color: #64748b; margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px; font-weight: 700;">
+                    <span>VENUE: <strong style="color: var(--neon-green);">L.PARK</strong></span>
+                    <span>TEAMS: 02</span>
+                    <span>PLAYERS: 16</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB 4: CHAMPIONS ================= -->
+        <div id="view-champions" class="tab-section">
+            <h2 class="gradient-text-electric" style="font-size: 20px; font-weight: 900; text-transform: uppercase;">Hall Of Champions</h2>
+            <p style="font-size: 12px; color: #94a3b8; margin-bottom: 12px;">The 7 title-holding squads in Samal–Rout Cup history</p>
+
+            <div class="glass-card border-gold" style="margin-bottom: 9px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 10px; font-weight: 900; color: var(--neon-gold);">SEASON 01 & SEASON 07</span>
+                    <span class="neon-tag tag-gold">2X CHAMPIONS</span>
+                </div>
+                <div style="font-size: 17px; font-weight: 900; color: #ffffff; margin-top: 3px;">THE SYNDICATE</div>
+                <div style="font-size: 11.5px; color: #cbd5e1;">Captain: <strong>Lala</strong> • VC: <strong>Subu (S1) / Sumit (S7)</strong></div>
+            </div>
+
+            <div class="glass-card border-green" style="margin-bottom: 9px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 10px; font-weight: 900; color: var(--neon-green);">SEASON 02</span>
+                    <span class="neon-tag tag-green">T10 SERIES</span>
+                </div>
+                <div style="font-size: 17px; font-weight: 900; color: #ffffff; margin-top: 3px;">DHAKAD XI</div>
+                <div style="font-size: 11.5px; color: #cbd5e1;">Captain: <strong>Rishu</strong> • Vice-Captain: <strong>Subu</strong></div>
+            </div>
+
+            <div class="glass-card border-cyan" style="margin-bottom: 9px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 10px; font-weight: 900; color: var(--neon-cyan);">SEASON 03</span>
+                    <span class="neon-tag tag-cyan">40 OVERS</span>
+                </div>
+                <div style="font-size: 17px; font-weight: 900; color: #ffffff; margin-top: 3px;">STANDARD XI</div>
+                <div style="font-size: 11.5px; color: #cbd5e1;">Captain: <strong>Kunu</strong> • Vice-Captain: <strong>Subu</strong></div>
+            </div>
+
+            <div class="glass-card border-gold" style="margin-bottom: 9px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 10px; font-weight: 900; color: var(--neon-gold);">SEASON 04</span>
+                    <span class="neon-tag tag-gold">12 OVERS</span>
+                </div>
+                <div style="font-size: 17px; font-weight: 900; color: #ffffff; margin-top: 3px;">BARCELONA</div>
+                <div style="font-size: 11.5px; color: #cbd5e1;">Captain: <strong>Dubey</strong> • Vice-Captain: <strong>Lala</strong></div>
+            </div>
+
+            <div class="glass-card border-green" style="margin-bottom: 9px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 10px; font-weight: 900; color: var(--neon-green);">SEASON 05</span>
+                    <span class="neon-tag tag-green">T10 SERIES</span>
+                </div>
+                <div style="font-size: 17px; font-weight: 900; color: #ffffff; margin-top: 3px;">LEGION XI</div>
+                <div style="font-size: 11.5px; color: #cbd5e1;">Captain: <strong>Subu</strong> • Vice-Captain: <strong>Babuma</strong></div>
+            </div>
+
+            <div class="glass-card" style="margin-bottom: 9px; border-color: var(--neon-purple); box-shadow: 0 0 15px rgba(199, 36, 255, 0.25);">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 10px; font-weight: 900; color: var(--neon-purple);">SEASON 06</span>
+                    <span class="neon-tag" style="background: rgba(199, 36, 255, 0.15); color: var(--neon-purple); border: 1px solid var(--neon-purple);">T20 SPECIAL</span>
+                </div>
+                <div style="font-size: 17px; font-weight: 900; color: #ffffff; margin-top: 3px;">CHRONOS</div>
+                <div style="font-size: 11.5px; color: #cbd5e1;">Captain: <strong>Somnath</strong> • Vice-Captain: <strong>Subu</strong></div>
+            </div>
+        </div>
+
+        <!-- ================= TAB 5: PLAYERS ================= -->
+        <div id="view-players" class="tab-section">
+            <h2 class="gradient-text-electric" style="font-size: 20px; font-weight: 900; text-transform: uppercase;">Player Archive</h2>
+            <p style="font-size: 12px; color: #94a3b8; margin-bottom: 12px;">Official tournament roster sorted by stature</p>
+
+            <div class="player-filter-tabs">
+                <button class="filter-btn active" onclick="pickPlayerFilter('legends')">Legends</button>
+                <button class="filter-btn" onclick="pickPlayerFilter('regular')">Regulars</button>
+                <button class="filter-btn" onclick="pickPlayerFilter('returners')">Returners</button>
+                <button class="filter-btn" onclick="pickPlayerFilter('newcomers')">New</button>
+            </div>
+
+            <!-- Legends -->
+            <div id="p-shelf-legends" class="player-grid active">
+                <div class="player-tile legend-style">
+                    <div style="font-size: 14px; font-weight: 900; color: #ffffff;">Lala Bhai</div>
+                    <div style="font-size: 10px; font-weight: 800; color: var(--neon-gold); margin-top: 3px;">Founder • 2x Champ Capt</div>
+                </div>
+                <div class="player-tile legend-style">
+                    <div style="font-size: 14px; font-weight: 900; color: #ffffff;">Asmit Samal</div>
+                    <div style="font-size: 10px; font-weight: 800; color: var(--neon-green); margin-top: 3px;">Co-Founder • Pillar</div>
+                </div>
+                <div class="player-tile legend-style">
+                    <div style="font-size: 14px; font-weight: 900; color: #ffffff;">Subham Rout</div>
+                    <div style="font-size: 10px; font-weight: 800; color: var(--neon-cyan); margin-top: 3px;">Co-Founder • Champ Capt</div>
+                </div>
+                <div class="player-tile legend-style">
+                    <div style="font-size: 14px; font-weight: 900; color: #ffffff;">Abinash Pal</div>
+                    <div style="font-size: 10px; font-weight: 800; color: var(--neon-green); margin-top: 3px;">Main Sponsor • Legend</div>
+                </div>
+                <div class="player-tile legend-style">
+                    <div style="font-size: 14px; font-weight: 900; color: #ffffff;">Rishu</div>
+                    <div style="font-size: 10px; font-weight: 800; color: var(--neon-gold); margin-top: 3px;">Champ Captain S02</div>
+                </div>
+            </div>
+
+            <!-- Regulars -->
+            <div id="p-shelf-regular" class="player-grid">
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Yash</div><div style="font-size: 9.5px; color: var(--neon-cyan);">Regular</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Riku</div><div style="font-size: 9.5px; color: var(--neon-cyan);">Regular</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Horo</div><div style="font-size: 9.5px; color: var(--neon-cyan);">Regular</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Babuma</div><div style="font-size: 9.5px; color: var(--neon-cyan);">Regular</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Dubey</div><div style="font-size: 9.5px; color: var(--neon-cyan);">Regular</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Bapun</div><div style="font-size: 9.5px; color: var(--neon-cyan);">Regular</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Om</div><div style="font-size: 9.5px; color: var(--neon-cyan);">Regular</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Rohit</div><div style="font-size: 9.5px; color: var(--neon-cyan);">Regular</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Suryansh</div><div style="font-size: 9.5px; color: var(--neon-cyan);">Regular</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Shreyas</div><div style="font-size: 9.5px; color: var(--neon-cyan);">Regular</div></div>
+            </div>
+
+            <!-- Returners -->
+            <div id="p-shelf-returners" class="player-grid">
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Kunu</div><div style="font-size: 9.5px; color: var(--neon-green);">Returner</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Panda</div><div style="font-size: 9.5px; color: var(--neon-green);">Returner</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Sai</div><div style="font-size: 9.5px; color: var(--neon-green);">Returner</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Giri</div><div style="font-size: 9.5px; color: var(--neon-green);">Returner</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Sandeep</div><div style="font-size: 9.5px; color: var(--neon-green);">Returner</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Nishi</div><div style="font-size: 9.5px; color: var(--neon-green);">Returner</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Subham</div><div style="font-size: 9.5px; color: var(--neon-green);">Returner</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Lucky</div><div style="font-size: 9.5px; color: var(--neon-green);">Returner</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Gourav</div><div style="font-size: 9.5px; color: var(--neon-green);">Returner</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Rudra</div><div style="font-size: 9.5px; color: var(--neon-green);">Returner</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Piku</div><div style="font-size: 9.5px; color: var(--neon-green);">Returner</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Anshuman</div><div style="font-size: 9.5px; color: var(--neon-green);">Returner</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Sumit</div><div style="font-size: 9.5px; color: var(--neon-green);">Returner</div></div>
+            </div>
+
+            <!-- Newcomers -->
+            <div id="p-shelf-newcomers" class="player-grid">
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Sunil</div><div style="font-size: 9.5px; color: var(--neon-purple);">Newcomer</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Jahangir</div><div style="font-size: 9.5px; color: var(--neon-purple);">Newcomer</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Ritesh</div><div style="font-size: 9.5px; color: var(--neon-purple);">Newcomer</div></div>
+                <div class="player-tile"><div style="font-size: 13px; font-weight: 800; color: #ffffff;">Pappu</div><div style="font-size: 9.5px; color: var(--neon-purple);">Newcomer</div></div>
+            </div>
+
+            <!-- Season 8 Teaser -->
+            <div class="glass-card border-green" style="margin-top: 14px; text-align: center;">
+                <span class="neon-tag tag-green">The Legacy Continues</span>
+                <div style="font-size: 18px; font-weight: 900; color: #ffffff; margin-top: 4px;">SEASON 08 • COMING NEXT</div>
+                <p style="font-size: 11px; color: #94a3b8; margin-top: 4px;">“Compete. Connect. Create Memories.”</p>
+            </div>
+        </div>
+
+        <!-- ================= PREMIUM HIGH-TECH FOOTER CREDITS ================= -->
+        <footer class="footer-credits">
+            <p>© 2026 SRC. All Rights Reserved.</p>
+            <p style="font-size: 11px; color: #94a3b8; margin-top: 4px;">
+                Website Engineered with 
+                <i class="fa-solid fa-heart neon-flicker-heart"></i> by 
+                <span class="lala-glow">LALA</span>
+            </p>
+        </footer>
+
+    </main>
+
+    <!-- ================= HIGH-TECH BOTTOM APP DOCK ================= -->
+    <nav class="bottom-app-dock">
+        <div class="dock-grid">
+            
+            <!-- Origin -->
+            <button class="dock-btn active" id="dock-origin" onclick="swapSection('origin')">
+                <svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
+                <span>Origin</span>
+            </button>
+
+            <!-- Pillars -->
+            <button class="dock-btn" id="dock-pillars" onclick="swapSection('pillars')">
+                <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                <span>Pillars</span>
+            </button>
+
+            <!-- Seasons -->
+            <button class="dock-btn" id="dock-seasons" onclick="swapSection('seasons')">
+                <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+                <span>Seasons</span>
+            </button>
+
+            <!-- Champs -->
+            <button class="dock-btn" id="dock-champions" onclick="swapSection('champions')">
+                <svg viewBox="0 0 24 24"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg>
+                <span>Champs</span>
+            </button>
+
+            <!-- Players -->
+            <button class="dock-btn" id="dock-players" onclick="swapSection('players')">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm-8 2.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zm-5 11c0-1.67 3.33-2.5 5-2.5s5 .83 5 2.5v.5H7v-.5zM17 13h-2v-1h2v1zm0-3h-2V9h2v1z"/></svg>
+                <span>Players</span>
+            </button>
+
+        </div>
+    </nav>
+
+    <!-- SCRIPT CONTROLLERS -->
+    <script>
+        function swapSection(name) {
+            var tabs = document.querySelectorAll('.tab-section');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+
+            var dockBtns = document.querySelectorAll('.dock-btn');
+            for (var j = 0; j < dockBtns.length; j++) {
+                dockBtns[j].classList.remove('active');
+            }
+
+            var view = document.getElementById('view-' + name);
+            if (view) {
+                view.classList.add('active');
+            }
+
+            var btn = document.getElementById('dock-' + name);
+            if (btn) {
+                btn.classList.add('active');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function pickSeason(num) {
+            var cards = document.querySelectorAll('.season-card');
+            for (var i = 0; i < cards.length; i++) {
+                cards[i].classList.remove('active');
+            }
+
+            var chips = document.querySelectorAll('.season-btn');
+            for (var j = 0; j < chips.length; j++) {
+                chips[j].classList.remove('active');
+            }
+
+            var targetCard = document.getElementById('season-tab-' + num);
+            if (targetCard) {
+                targetCard.classList.add('active');
+            }
+
+            if (chips[num - 1]) {
+                chips[num - 1].classList.add('active');
+            }
+        }
+
+        function pickPlayerFilter(category) {
+            var shelves = document.querySelectorAll('.player-grid');
+            for (var i = 0; i < shelves.length; i++) {
+                shelves[i].classList.remove('active');
+            }
+
+            var filterButtons = document.querySelectorAll('.filter-btn');
+            for (var j = 0; j < filterButtons.length; j++) {
+                filterButtons[j].classList.remove('active');
+            }
+
+            var targetShelf = document.getElementById('p-shelf-' + category);
+            if (targetShelf) {
+                targetShelf.classList.add('active');
+            }
+
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
