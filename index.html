@@ -96,7 +96,6 @@
             gap: 12px;
         }
 
-        /* Enlarged Holographic Photo Crest */
         .cup-logo-wrapper {
             position: relative;
             width: 50px;
@@ -328,14 +327,13 @@
             margin: 10px 0;
         }
 
-        /* ================= PROFILES WITH MUCH BIGGER PHOTOS ================= */
+        /* ================= PROFILES (LARGE CINEMATIC CARDS) ================= */
         .profile-row {
             display: flex;
             gap: 14px;
             align-items: stretch;
         }
 
-        /* Upgraded from 82x98px to 125x180px for a massive visual boost */
         .profile-photo-box {
             position: relative;
             width: 125px;
@@ -356,7 +354,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* Anchors crop toward the upper body so 9:16 vertical photos never chop heads */
             object-position: center 20%;
             border-radius: 13px;
             background: #02050c;
@@ -630,88 +627,8 @@
     <!-- MAIN VIEW CONTAINER -->
     <main>
 
-        <!-- ================= TAB 1: ORIGIN ================= -->
-        <div id="view-origin" class="tab-section active">
-            <div class="glass-card border-green">
-                <span class="neon-tag tag-green">Inaugural Chapter</span>
-                <h2 class="gradient-text-electric" style="font-size: 22px; font-weight: 900; margin-top: 6px;">
-                    Where It All Began
-                </h2>
-                <p style="font-size: 12px; color: #cbd5e1; line-height: 1.5; margin-top: 4px;">
-                    A cup born from pure competition, forged in brotherhood. Founded in 2026 at the fortress of <strong style="color: var(--neon-gold);">L.Park</strong>.
-                </p>
-
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="val" style="color: var(--neon-gold);">07</div>
-                        <div class="lbl">Seasons</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="val" style="color: var(--neon-green);">07</div>
-                        <div class="lbl">Champs</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="val" style="color: var(--neon-cyan);">01</div>
-                        <div class="lbl">L.Park</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="val" style="color: #c724ff;">2026</div>
-                        <div class="lbl">Founded</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Why Samal-Rout Card -->
-            <div class="glass-card border-gold">
-                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px; margin-bottom: 10px;">
-                    <span style="font-size: 11px; font-weight: 800; color: var(--neon-gold); text-transform: uppercase;">Why "Samal–Rout"?</span>
-                    <span class="neon-tag tag-gold">Co-Founders</span>
-                </div>
-                <div style="display: flex; justify-content: space-around; text-align: center; padding: 6px 0;">
-                    <div>
-                        <div style="font-weight: 900; color: #ffffff; font-size: 14px;">ASMIT SAMAL</div>
-                        <div style="font-size: 11px; color: var(--neon-green); font-weight: 700;">Squad Balance & Vision</div>
-                    </div>
-                    <div style="font-size: 22px; font-weight: 900; color: var(--neon-gold); text-shadow: 0 0 10px var(--neon-gold);">+</div>
-                    <div>
-                        <div style="font-weight: 900; color: #ffffff; font-size: 14px;">SUBHAM ROUT</div>
-                        <div style="font-size: 11px; color: var(--neon-cyan); font-weight: 700;">Treasury & Ground Ops</div>
-                    </div>
-                </div>
-                <p style="font-size: 11px; color: #94a3b8; text-align: center; margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px;">
-                    United alongside <strong style="color: #ffffff;">Abhisek Dash</strong> in turning rivalries into permanent family memories.
-                </p>
-            </div>
-
-            <!-- Poetic Story -->
-            <div class="glass-card">
-                <span class="neon-tag tag-cyan" style="margin-bottom: 6px;">Poetic Inscription</span>
-                <div class="poetic-box">
-                    “Before there was a trophy, there was an idea.<br>
-                    Before there was a champion, there was a group.<br>
-                    And before there was a competition, there was a dream — to bring people together, challenge one another, and turn a group into something closer to a family.”
-                </div>
-                <div class="poetic-box" style="border-color: var(--neon-gold); background: linear-gradient(135deg, rgba(255, 190, 11, 0.08), rgba(0,0,0,0));">
-                    “Competition without losing connection, rivalry without losing friendship, and cricket that creates memories beyond the scoreboard.”
-                </div>
-            </div>
-
-            <!-- Venue Tribute -->
-            <div class="glass-card border-cyan" style="display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <span style="font-size: 10px; font-weight: 800; color: var(--neon-cyan); text-transform: uppercase;">The Fortress</span>
-                    <div style="font-size: 20px; font-weight: 900; color: #ffffff;">L.PARK</div>
-                    <div style="font-size: 11px; color: #94a3b8;">7 Seasons • 7 Chapters • 1 Historic Home</div>
-                </div>
-                <div style="text-align: right;">
-                    <div style="font-size: 24px; font-weight: 900; color: var(--neon-cyan); text-shadow: 0 0 14px var(--neon-cyan);">100%</div>
-                    <div style="font-size: 9px; color: #94a3b8; font-weight: 700;">MATCH RECORD</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= TAB 2: PILLARS & SPONSOR (BIGGER PHOTOS) ================= -->
-        <div id="view-pillars" class="tab-section">
+        <!-- ================= SECTION 1: PILLARS & SPONSOR (NOW FIRST) ================= -->
+        <div id="view-pillars" class="tab-section active">
             <h2 class="gradient-text-electric" style="font-size: 20px; font-weight: 900; text-transform: uppercase;">Founding Pillars</h2>
             <p style="font-size: 12px; color: #94a3b8; margin-bottom: 14px;">The visionaries, organisers and benefactor of the cup</p>
 
@@ -821,6 +738,86 @@
                         </div>
                         <div style="font-size: 11px; color: #94a3b8; font-style: italic; margin-top: 6px;">“A vital contribution to the tournament journey.”</div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= SECTION 2: ORIGIN & HISTORY (NOW SECOND) ================= -->
+        <div id="view-origin" class="tab-section">
+            <div class="glass-card border-green">
+                <span class="neon-tag tag-green">Inaugural Chapter</span>
+                <h2 class="gradient-text-electric" style="font-size: 22px; font-weight: 900; margin-top: 6px;">
+                    Where It All Began
+                </h2>
+                <p style="font-size: 12px; color: #cbd5e1; line-height: 1.5; margin-top: 4px;">
+                    A cup born from pure competition, forged in brotherhood. Founded in 2026 at the fortress of <strong style="color: var(--neon-gold);">L.Park</strong>.
+                </p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="val" style="color: var(--neon-gold);">07</div>
+                        <div class="lbl">Seasons</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="val" style="color: var(--neon-green);">07</div>
+                        <div class="lbl">Champs</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="val" style="color: var(--neon-cyan);">01</div>
+                        <div class="lbl">L.Park</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="val" style="color: #c724ff;">2026</div>
+                        <div class="lbl">Founded</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Samal-Rout Card -->
+            <div class="glass-card border-gold">
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px; margin-bottom: 10px;">
+                    <span style="font-size: 11px; font-weight: 800; color: var(--neon-gold); text-transform: uppercase;">Why "Samal–Rout"?</span>
+                    <span class="neon-tag tag-gold">Co-Founders</span>
+                </div>
+                <div style="display: flex; justify-content: space-around; text-align: center; padding: 6px 0;">
+                    <div>
+                        <div style="font-weight: 900; color: #ffffff; font-size: 14px;">ASMIT SAMAL</div>
+                        <div style="font-size: 11px; color: var(--neon-green); font-weight: 700;">Squad Balance & Vision</div>
+                    </div>
+                    <div style="font-size: 22px; font-weight: 900; color: var(--neon-gold); text-shadow: 0 0 10px var(--neon-gold);">+</div>
+                    <div>
+                        <div style="font-weight: 900; color: #ffffff; font-size: 14px;">SUBHAM ROUT</div>
+                        <div style="font-size: 11px; color: var(--neon-cyan); font-weight: 700;">Treasury & Ground Ops</div>
+                    </div>
+                </div>
+                <p style="font-size: 11px; color: #94a3b8; text-align: center; margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 8px;">
+                    United alongside <strong style="color: #ffffff;">Abhisek Dash</strong> in turning rivalries into permanent family memories.
+                </p>
+            </div>
+
+            <!-- Poetic Story -->
+            <div class="glass-card">
+                <span class="neon-tag tag-cyan" style="margin-bottom: 6px;">Poetic Inscription</span>
+                <div class="poetic-box">
+                    “Before there was a trophy, there was an idea.<br>
+                    Before there was a champion, there was a group.<br>
+                    And before there was a competition, there was a dream — to bring people together, challenge one another, and turn a group into something closer to a family.”
+                </div>
+                <div class="poetic-box" style="border-color: var(--neon-gold); background: linear-gradient(135deg, rgba(255, 190, 11, 0.08), rgba(0,0,0,0));">
+                    “Competition without losing connection, rivalry without losing friendship, and cricket that creates memories beyond the scoreboard.”
+                </div>
+            </div>
+
+            <!-- Venue Tribute -->
+            <div class="glass-card border-cyan" style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="font-size: 10px; font-weight: 800; color: var(--neon-cyan); text-transform: uppercase;">The Fortress</span>
+                    <div style="font-size: 20px; font-weight: 900; color: #ffffff;">L.PARK</div>
+                    <div style="font-size: 11px; color: #94a3b8;">7 Seasons • 7 Chapters • 1 Historic Home</div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 24px; font-weight: 900; color: var(--neon-cyan); text-shadow: 0 0 14px var(--neon-cyan);">100%</div>
+                    <div style="font-size: 9px; color: #94a3b8; font-weight: 700;">MATCH RECORD</div>
                 </div>
             </div>
         </div>
@@ -1147,31 +1144,31 @@
     <nav class="bottom-app-dock">
         <div class="dock-grid">
             
-            <!-- Origin -->
-            <button class="dock-btn active" id="dock-origin" onclick="swapSection('origin')">
-                <svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
-                <span>Origin</span>
-            </button>
-
-            <!-- Pillars -->
-            <button class="dock-btn" id="dock-pillars" onclick="swapSection('pillars')">
+            <!-- Tab 1: Pillars (Now 1st) -->
+            <button class="dock-btn active" id="dock-pillars" onclick="swapSection('pillars')">
                 <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
                 <span>Pillars</span>
             </button>
 
-            <!-- Seasons -->
+            <!-- Tab 2: Origin (Now 2nd) -->
+            <button class="dock-btn" id="dock-origin" onclick="swapSection('origin')">
+                <svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
+                <span>Origin</span>
+            </button>
+
+            <!-- Tab 3: Seasons -->
             <button class="dock-btn" id="dock-seasons" onclick="swapSection('seasons')">
                 <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
                 <span>Seasons</span>
             </button>
 
-            <!-- Champs -->
+            <!-- Tab 4: Champs -->
             <button class="dock-btn" id="dock-champions" onclick="swapSection('champions')">
                 <svg viewBox="0 0 24 24"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg>
                 <span>Champs</span>
             </button>
 
-            <!-- Players -->
+            <!-- Tab 5: Players -->
             <button class="dock-btn" id="dock-players" onclick="swapSection('players')">
                 <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm-8 2.5a2.5 2.5 0 110 5 2.5 2.5 0 010-5zm-5 11c0-1.67 3.33-2.5 5-2.5s5 .83 5 2.5v.5H7v-.5zM17 13h-2v-1h2v1zm0-3h-2V9h2v1z"/></svg>
                 <span>Players</span>
